@@ -55,7 +55,8 @@ class Dev(Configuration):
         'blog',
         'crispy_forms',
         'crispy_bootstrap5',
-        "debug_toolbar",
+        'debug_toolbar',
+        'blango_auth',
     ]
 
     MIDDLEWARE = [
@@ -139,9 +140,11 @@ class Dev(Configuration):
 
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-    CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+    CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
-    CRISPY_TEMPLATE_PACK = "bootstrap5"
+    CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+    AUTH_USER_MODEL = 'blango_auth.User'
 
 
     LOGGING = {
