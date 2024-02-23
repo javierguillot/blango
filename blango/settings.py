@@ -63,6 +63,7 @@ class Dev(Configuration):
         'allauth.socialaccount', 
         'allauth.socialaccount.providers.google',
         'rest_framework',
+        'rest_framework.authtoken',
     ]
 
     MIDDLEWARE = [
@@ -210,6 +211,14 @@ class Dev(Configuration):
     ACCOUNT_AUTHENTICATION_METHOD = "email"
 
     SITE_ID = 1
+
+    REST_FRAMEWORK = {
+        "DEFAULT_AUTHENTICATION_CLASSES": [
+            "rest_framework.authentication.BasicAuthentication",
+            "rest_framework.authentication.SessionAuthentication",
+            "rest_framework.authentication.TokenAuthentication",
+        ]
+    }
 
 
 class Prod(Dev):
