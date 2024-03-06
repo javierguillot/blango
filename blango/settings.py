@@ -14,6 +14,8 @@ import os
 
 import dj_database_url
 
+from datetime import timedelta
+
 from pathlib import Path
 
 from configurations import Configuration, values
@@ -219,6 +221,7 @@ class Dev(Configuration):
             "rest_framework.authentication.BasicAuthentication",
             "rest_framework.authentication.SessionAuthentication",
             "rest_framework.authentication.TokenAuthentication",
+            "rest_framework_simplejwt.authentication.JWTAuthentication",
         ],
         "DEFAULT_PERMISSION_CLASSES": [
             "rest_framework.permissions.IsAuthenticatedOrReadOnly",
@@ -241,6 +244,11 @@ class Dev(Configuration):
             "django_filters.rest_framework.DjangoFilterBackend",
             "rest_framework.filters.OrderingFilter",
         ],
+    }
+
+    SIMPLE_JWT = {
+        "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+        "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     }
 
     SWAGGER_SETTINGS = {
